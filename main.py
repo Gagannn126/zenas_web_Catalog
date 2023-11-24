@@ -7,7 +7,7 @@ from urllib.error import URLError
 
 streamlit.header("Zena's amazing athleisure catalog")
 
-streamlit.text_input('Pick a sweatsuit color or style',red)
+streamlit.text_input('Pick a sweatsuit color or style','red')
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
