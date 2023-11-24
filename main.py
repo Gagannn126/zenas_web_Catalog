@@ -7,10 +7,10 @@ from urllib.error import URLError
 
 streamlit.header("Zena's amazing athleisure catalog")
 
-streamlit.text_input('Pick a sweatsuit color or style','red')
+picked_option=streamlit.text_input('Pick a sweatsuit color or style','red')
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(),CURRENT_REGION()")
+my_cur.execute("SELECT * from catalog_for_website where color_or_style = "+picked_option)
 my_data_row = my_cur.fetchone()
 streamlit.text(my_data_row)
